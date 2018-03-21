@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cart/cart",
     "pages/index/index",
     "pages/logs/logs",
     "pages/worklist/worklist"
@@ -21,8 +22,8 @@
         "selectedIconPath": "images/tabBarIcon/all_act.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志",
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
         "iconPath": "images/tabBarIcon/list.png",
         "selectedIconPath": "images/tabBarIcon/list_act.png"
       },
