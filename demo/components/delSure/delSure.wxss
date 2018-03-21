@@ -1,0 +1,39 @@
+/* components/delSure/delSure.wxss */
+.sure-box{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+.sbox-inbox{
+  width: 80%;
+  height: 400rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  position: relative;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding-top: 25rpx;
+  overflow: hidden;
+}
+.s-in-btmbox{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  border-top: 1px solid grey;
+}
+.s-in-btmbox>view{
+  flex: 1;
+}
+.s-in-btmbox>view:first-of-type{
+  border-right: 1px solid grey;
+  color: red;
+}

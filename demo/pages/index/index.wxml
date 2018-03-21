@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view>
+  <!--轮播图  -->
+  <swiper indicator-dots='{{swiperOption.indicatorDots}}' autoplay='{{swiperOption.autoplay}}' duration='{{swiperOption.duration}}' interval='{{swiperOption.interval}}' circular='{{swiperOption.circular}}' class='swiperbox'>
+    <swiper-item wx:for="{{imgList}}">
+      <image src="{{item}}" class="swiper-img" />
+    </swiper-item>
+  </swiper>
+</view>

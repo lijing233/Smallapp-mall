@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "surebox": "../../components/delSure/delSure"
+  }
+}

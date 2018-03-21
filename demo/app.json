@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/worklist/worklist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Myproject",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#dbdbdb",
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBarIcon/all.png",
+        "selectedIconPath": "images/tabBarIcon/all_act.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "images/tabBarIcon/list.png",
+        "selectedIconPath": "images/tabBarIcon/list_act.png"
+      },
+      {
+        "pagePath": "pages/worklist/worklist",
+        "text": "测试",
+        "iconPath": "images/tabBarIcon/favorites.png",
+        "selectedIconPath": "images/tabBarIcon/favorites_act.png"
+      }
+    ]
+  }
+}
