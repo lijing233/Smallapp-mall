@@ -1,0 +1,13 @@
+/* components/calCart/calcart.wxss */
+.calcart {
+  display: block;
+}
+.minus,.plus,input {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background:pink; 
+}
+input {
+  width: 80px;
+}
