@@ -7,6 +7,7 @@ Page({
    */
   data: {
     item: {},
+    likeFlag: false,
     list: [{
       id: "1", "shopname": "商城abc", "isChecked": false, "products": [
         { "isChecked": false, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "$18.00", "num": "3", id: "01" },
@@ -23,6 +24,16 @@ Page({
     this.setData({
       item: app.globalData.detailItem
     })
+
+    var list = wx.getStorageSync('likelist');
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].name == this.data.item.name) {
+        this.setData({
+          likeFlag: true
+        })
+        break;
+      }
+    }
   },
 
   /**
@@ -36,7 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // wx.setNavigationBarTitle(this.data.item.name)
   },
 
   /**
@@ -72,5 +83,52 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  changeLike() {
+    this.setData({
+      likeFlag: !this.data.likeFlag
+    })
+    var list = wx.getStorageSync('likelist');
+    console.log(list)
+    if(this.data.likeFlag){
+      var item = this.data.item;
+      item.textStyle = "";
+      item.txt = item.name;
+      list.push(item);
+    }else{
+      for(var i=0; i<list.length; i++){
+        if(list[i].name == this.data.item.name){
+          list.splice(i,1);
+          break;
+        }
+      }
+    }
+    wx.setStorageSync('likelist', list)
+  },
+
+  // 打开相册
+  openpic(){
+    wx.chooseImage({
+      success: function(res) {
+        console.log(res)
+      },
+    })
+  },
+
+
+  // xiaoxi
+  showtoast() {
+    wx.showToast({icon:'success',title: '成功'})
+  },
+  showaction() {
+    wx.showActionSheet({
+      itemList: ['ipone8 128G 黑色', 'ipone8 128G 白色', 'iponeX 128G 黑色'],
+      success: function (res) {
+        console.log(res.tapIndex)
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
   }
 })
