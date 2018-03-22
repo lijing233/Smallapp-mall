@@ -100,7 +100,7 @@ Page({
     wx.vibrateShort()
     wx.showModal({
       title: '提示',
-      content: '这是一个模态弹窗',
+      content: '确定要删除吗？',
       success:  (res) => {
         if (res.confirm) {
           console.log('用户点击确定')

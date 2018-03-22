@@ -9,10 +9,10 @@
   <!--标题  -->
   <view class='goods-tit'>现货热卖</view>
   <view class='goods-box'>
-     <view wx:for="{{goodsList}}">
+     <view wx:for="{{goodsList}}" bindtap='toDetail' data-item="{{item}}">
       <image src="{{goodsImgList[item.img]}}" class='goods-img'></image>
       <view class='goods-name'>{{item.name}}</view>
-      <view class='goods-show'>{{item.show}}</view>
+      <view class='goods-show'>{{item.spec}}</view>
       <view class='goods-price'>￥{{item.price}}</view>
     </view>
   </view>

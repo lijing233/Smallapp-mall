@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/cart/cart",
     "pages/index/index",
+    "pages/cart/cart",
     "pages/logs/logs",
-    "pages/worklist/worklist"
+    "pages/worklist/worklist",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

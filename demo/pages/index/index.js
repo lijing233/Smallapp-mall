@@ -44,5 +44,14 @@ Page({
       }
     })
   },
+  // 跳转详情页
+  toDetail(e) {
+    var item = e.currentTarget.dataset.item;
+    item.img = this.data.goodsImgList[item.img];
+    app.globalData.detailItem = item;
+    wx.navigateTo({
+      url: '../../pages/detail/detail'
+    })
+  }
 
 })
