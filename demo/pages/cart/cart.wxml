@@ -3,12 +3,12 @@
   <view class="contain" wx:for="{{list}}" wx:for-item="shop" wx:key="index">
      <view>
       <view class="shop-bar">
-        <view class="{{isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
+        <view class="{{!isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
         <view class="shop-name" bindtap="onManage">{{shop.shopname}}</view>
         <view class="edit">编辑</view>
       </view>
       <view class="item-wrap" wx:for="{{shop.products}}" wx:for-item="item" wx:key="index">
-        <view class="{{isItemChecked?'item-cb':'item-cb-checked'}}" bindtap="toggleCheckedCarts" data-id="{{shop.id}}" data-item="{{item}}"></view>
+        <view class="{{!item.isChecked?'item-cb':'item-cb-checked'}}" bindtap="toggleCheckedCarts" data-id="{{item.id}}"></view>
         <image src="../../images/cart/milk.png" class="item-img"></image>
         <view class="item-info">
           <view class="item-name ellip">{{item.name}}</view>

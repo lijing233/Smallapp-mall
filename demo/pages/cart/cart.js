@@ -12,13 +12,29 @@ Page({
       ]
     }],
     isChecked: false,
-    checkedCarts: [],
-    isItemChecked: false
+    checkedCarts: []
   },
   onManage() {
     this.setData({
       isChecked: !this.data.isChecked
     })
+    let carts = this.data.list[0].products;
+    //如果商城选中
+    if (this.data.isChecked) {
+      //将每个商品状态改为选中
+      carts.filter(function (t) {
+        return t.isChecked = this.data.isChecked
+      })
+    }
+    //将改完的状态赋值给data中的list
+    let list = this.data.list[0];
+    // list[0].products = carts
+    console.log(this.data.list[0]);
+    //重新赋值list
+    // this.setData({
+    //   isChecked: this.data.isChecked,
+    //   list: list 
+    // })    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -48,13 +64,21 @@ Page({
     }    
   },
   toggleCheckedCarts(e) {
-    // var isItemChecked = e.target.dataset.item.isChecked
-    
-    console.log(e.target.dataset.item.isChecked)
+    let carts = this.data.list[0].products;
+    let eId = (e.target.dataset.id).toString();
+    var cart = {}
+    for (var i = 0, length = carts.length; i < length; i++) {
+      var item = carts[i];
+      if (item.id === eId) {
+        cart = item
+        cart.isChecked = !cart.isChecked
+        break
+      }
+    }
+    // console.log(this.data.list)
     this.setData({
-      isItemChecked: !this.data.isItemChecked
+      list: this.data.list
     })
-    // console.log(!e.target.dataset.isChecked)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
