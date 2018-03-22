@@ -33,7 +33,7 @@
         "text": "测试",
         "iconPath": "images/tabBarIcon/favorites.png",
         "selectedIconPath": "images/tabBarIcon/favorites_act.png"
-      }
+       }    
     ]
   }
 }

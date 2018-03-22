@@ -1,14 +1,14 @@
 <!--pages/cart/cart.wxml-->
 <view class="outer">
-  <view class="contain" wx:for="{{list}}" wx:for-item="{{shop}}" wx:key="index">
-    <view>
+  <view class="contain" wx:for="{{list}}" wx:for-item="shop" wx:key="index">
+     <view>
       <view class="shop-bar">
-        <view class="{{shop.isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
+        <view class="{{isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
         <view class="shop-name" bindtap="onManage">{{shop.shopname}}</view>
         <view class="edit">编辑</view>
       </view>
-      <view class="item-wrap" wx:for="{{shop.products}}" wx:for-item="{{item}}" wx:key="index">
-        <view class="checkbox item-cb"></view>
+      <view class="item-wrap" wx:for="{{shop.products}}" wx:for-item="item" wx:key="index">
+        <view class="{{isItemChecked?'item-cb':'item-cb-checked'}}" bindtap="toggleCheckedCarts" data-id="{{shop.id}}" data-item="{{item}}"></view>
         <image src="../../images/cart/milk.png" class="item-img"></image>
         <view class="item-info">
           <view class="item-name ellip">{{item.name}}</view>
@@ -17,14 +17,13 @@
                 <view class="unit">{{item.unit}}</view>
           </view>
           <view class="item-price">
-              <!-- <view class="origin">$20.00</view> -->
               <view class="current">{{item.price}}</view>
               <view class="num">x{{item.num}}</view>
           </view> 
         </view>
       </view>
             
-    </view>
+    </view> 
   </view>
   <view class="footer">
     <view class="checkbox"></view>
