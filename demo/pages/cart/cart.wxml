@@ -1,26 +1,35 @@
 <!--pages/cart/cart.wxml-->
-<view class="contain">
-  <view>
-    <view class="shop-bar">
-      <view class="{{isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
-      <view class="shop-name">商城abc</view>
-      <view class="edit">编辑</view>
-    </view>
-    <view class="item-wrap">
-      <view class="checkbox item-cb"></view>
-      <image src="../../images/cart/milk.png" class="item-img"></image>
-      <view class="item-info">
-        <view class="item-name ellip">shjsjsjjsjssssssshjsjsjjsjssssssshj</view>
-         <view class="item-spec">
-              <view class="spec">粉,鲜花种子</view>
-              <view class="unit">30粒/包</view>
-        </view>
-        <view class="item-price">
-            <!-- <view class="origin">$20.00</view> -->
-            <view class="current">$18.00</view>
-            <view class="num">x3</view>
-        </view> 
+<view class="outer">
+  <view class="contain" wx:for="{{list}}" wx:for-item="{{shop}}" wx:key="index">
+    <view>
+      <view class="shop-bar">
+        <view class="{{shop.isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
+        <view class="shop-name" bindtap="onManage">{{shop.shopname}}</view>
+        <view class="edit">编辑</view>
       </view>
+      <view class="item-wrap" wx:for="{{shop.products}}" wx:for-item="{{item}}" wx:key="index">
+        <view class="checkbox item-cb"></view>
+        <image src="../../images/cart/milk.png" class="item-img"></image>
+        <view class="item-info">
+          <view class="item-name ellip">{{item.name}}</view>
+          <view class="item-spec">
+                <view class="spec">{{item.spec}}</view>
+                <view class="unit">{{item.unit}}</view>
+          </view>
+          <view class="item-price">
+              <!-- <view class="origin">$20.00</view> -->
+              <view class="current">{{item.price}}</view>
+              <view class="num">x{{item.num}}</view>
+          </view> 
+        </view>
+      </view>
+            
     </view>
+  </view>
+  <view class="footer">
+    <view class="checkbox"></view>
+    全选
+    <view class="tocalsum">结算</view>
+    <view class="result">合计:￥00</view>
   </view>
 </view>
