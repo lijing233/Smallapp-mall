@@ -1,4 +1,53 @@
 /* pages/detail/detail.wxss */
+view{
+  box-sizing: border-box;
+}
 .item-image{
   width: 100%;
+}
+.base-info{
+  margin: 15rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #f1f1f1;
+  position: relative;
+}
+.base-info>.like{
+  position: absolute;
+  right: 20rpx;
+  top: 30%;
+  width: 100rpx;
+  height: 100rpx;
+}
+.base-info>.like image{
+  width: 100%;
+  height: 100%;
+}
+.goods-name{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 40rpx;
+  color: rgba(0,0,0,.87);
+  padding-left: 30rpx;
+}
+.goods-show{
+  font-size: 32rpx;
+  color: rgba(0,0,0,.54);
+  padding-left: 30rpx;
+}
+.goods-price{
+  margin-top: 8rpx;
+  font-size: 40rpx;
+  color: #ea625b;
+  padding-left: 30rpx;
+}
+.pro{
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+.shop{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 30rpx;
 }

@@ -31,12 +31,15 @@ Page({
   //事件处理函数
   onLoad: function () {
     this.reqGoodList()
+    wx.showLoading({
+    })
   },
   // 请求商品列表
   reqGoodList() {
     wx.request({
       url: 'https://www.easy-mock.com/mock/5ab1c898099ac320aa6ba70e/wechat/lijing/goods',
       success: (res) => {
+        wx.hideLoading()
         console.log(res)
         this.setData({
           goodsList: res.data.data.goodsList
