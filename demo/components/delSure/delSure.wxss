@@ -10,7 +10,7 @@
 }
 .sbox-inbox{
   width: 80%;
-  height: 400rpx;
+  height: 350rpx;
   background: #fff;
   border-radius: 20rpx;
   position: relative;
@@ -21,6 +21,10 @@
   padding-top: 25rpx;
   overflow: hidden;
 }
+.show-text{
+  margin-top: 20rpx;
+  font-size: 40rpx;
+}
 .s-in-btmbox{
   width: 100%;
   position: absolute;
@@ -28,12 +32,12 @@
   height: 100rpx;
   line-height: 100rpx;
   display: flex;
-  border-top: 1px solid grey;
+  border-top: 1px solid #F7F7F7;
 }
 .s-in-btmbox>view{
   flex: 1;
 }
 .s-in-btmbox>view:first-of-type{
-  border-right: 1px solid grey;
+  border-right: 1px solid #F7F7F7;
   color: red;
 }

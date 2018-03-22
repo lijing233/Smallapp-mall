@@ -1,11 +1,11 @@
 <!--components/delSure/delSure.wxml-->
-<view class='sure-box'>
+<view class='sure-box' hidden='{{showFlag}}'>
   <view class='sbox-inbox'>
     <icon type="warn" size="50" class='warn-icon' />
-    <view>确定要删除吗？</view>
+    <view class='show-text'>确定要删除吗？</view>
     <view class='s-in-btmbox'>
       <view>确定</view>
-      <view>取消</view>
+      <view bindtap='cancel'>取消</view>
     </view>
   </view>
 </view>

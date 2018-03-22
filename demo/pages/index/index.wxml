@@ -1,9 +1,19 @@
 <!--index.wxml-->
-<view>
+<view class='container'>
   <!--轮播图  -->
   <swiper indicator-dots='{{swiperOption.indicatorDots}}' autoplay='{{swiperOption.autoplay}}' duration='{{swiperOption.duration}}' interval='{{swiperOption.interval}}' circular='{{swiperOption.circular}}' class='swiperbox'>
     <swiper-item wx:for="{{imgList}}">
       <image src="{{item}}" class="swiper-img" />
     </swiper-item>
   </swiper>
+  <!--标题  -->
+  <view class='goods-tit'>现货热卖</view>
+  <view class='goods-box'>
+     <view wx:for="{{goodsList}}">
+      <image src="{{goodsImgList[item.img]}}" class='goods-img'></image>
+      <view class='goods-name'>{{item.name}}</view>
+      <view class='goods-show'>{{item.show}}</view>
+      <view class='goods-price'>￥{{item.price}}</view>
+    </view>
+  </view>
 </view>
