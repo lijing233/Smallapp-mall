@@ -58,6 +58,12 @@ view {
   margin-right: 20rpx;
 }
 .item-cb {
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 20rpx;  
   float: left;
   margin-top: 36px;
 }
@@ -133,4 +139,15 @@ view {
   border-radius: 50%;
   margin-right: 20rpx;
   background-color: rosybrown;
+}
+.item-cb-checked {
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 20rpx;  
+  margin-top: 36px;
+  background-color: rosybrown;
+  float: left;
 }

@@ -2,7 +2,6 @@
   "pages": [
     "pages/cart/cart",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/worklist/worklist"
   ],
   "window": {
@@ -32,7 +31,7 @@
         "text": "测试",
         "iconPath": "images/tabBarIcon/favorites.png",
         "selectedIconPath": "images/tabBarIcon/favorites_act.png"
-      }
+       }    
     ]
   }
 }
