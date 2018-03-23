@@ -33,6 +33,7 @@ Page({
     this.reqGoodList()
     wx.showLoading({
     })
+    wx.showNavigationBarLoading()
   },
   // 请求商品列表
   reqGoodList() {
@@ -40,6 +41,7 @@ Page({
       url: 'https://www.easy-mock.com/mock/5ab1c898099ac320aa6ba70e/wechat/lijing/goods',
       success: (res) => {
         wx.hideLoading()
+        wx.hideNavigationBarLoading()
         console.log(res)
         this.setData({
           goodsList: res.data.data.goodsList

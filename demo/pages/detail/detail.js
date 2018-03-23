@@ -14,7 +14,9 @@ Page({
         { "isChecked": false, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "$18.00", "num": "3", id: "02" },
         { "isChecked": false, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "03" }
       ]
-    }]
+    }],
+    lightValue: '',
+    cartList: app.globalData.cartList
   },
 
   /**
@@ -34,6 +36,20 @@ Page({
         break;
       }
     }
+
+    wx.setNavigationBarTitle({
+      title: this.data.item.name
+    })
+
+    // 获取亮度
+    wx.getScreenBrightness({
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          lightValue: parseInt(res.value*100)
+        })
+      }
+    })
   },
 
   /**
@@ -47,7 +63,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // wx.setNavigationBarTitle(this.data.item.name)
+    console.log(this.data.item.name)
+    
   },
 
   /**
@@ -106,20 +123,11 @@ Page({
     wx.setStorageSync('likelist', list)
   },
 
-  // 打开相册
-  openpic(){
-    wx.chooseImage({
-      success: function(res) {
-        console.log(res)
-      },
-    })
-  },
 
 
-  // xiaoxi
-  showtoast() {
-    wx.showToast({icon:'success',title: '成功'})
-  },
+
+
+  // 底部选择栏
   showaction() {
     wx.showActionSheet({
       itemList: ['ipone8 128G 黑色', 'ipone8 128G 白色', 'iponeX 128G 黑色'],
@@ -130,5 +138,62 @@ Page({
         console.log(res.errMsg)
       }
     })
+  },
+
+  // 添加到购物车
+  addCart() {
+    
+    var shopid = this.data.item.shopid,
+      itemid = this.data.item.id
+
+    var cartList = app.globalData.cartList;
+    console.log(cartList)
+    var hasshop = false;
+    for(var i=0; i<cartList.length; i++){
+      if(cartList[i].shopid === shopid){
+        hasshop = true;
+        var flag = true;
+        for (var j = 0; j < cartList[i].products.length; j++){
+          if (cartList[i].products[j].id == itemid){
+            cartList[i].products[j].num ++;
+            flag = false;
+            break;
+          }
+        }
+        if(flag){
+          var goods = {
+            "isChecked": true,
+            "name": this.data.item.name,
+            "spec": this.data.item.spec,
+            "unit": "30粒/包",
+            "price": this.data.item.price,
+            "num": 1,
+            id: this.data.item.id
+          }
+          cartList[i].products.push(goods)
+        }
+        break;
+      }
+    }
+
+    if(!hasshop){
+      var goods = {
+        shopid: shopid,
+        isChecked: true,
+        shopname: this.data.item.shopname,
+        products: [{
+          "isChecked": true,
+          "name": this.data.item.name,
+          "spec": this.data.item.spec,
+          "unit": "30粒/包",
+          "price": this.data.item.price,
+          "num": 1,
+          id: this.data.item.id
+        }]
+      }
+      app.globalData.cartList.push(goods);
+    }
+    console.log(app.globalData.cartList)
   }
+  
 })
