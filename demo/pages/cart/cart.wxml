@@ -8,7 +8,7 @@
         <view class="edit">编辑</view>
       </view>
       <view class="item-wrap" wx:for="{{shop.products}}" wx:for-item="item" wx:key="index">
-        <view class="{{!item.isChecked?'item-cb':'item-cb-checked'}}" bindtap="toggleCheckedCarts" data-id="{{item.id}}"></view>
+        <view class="{{!item.isChecked?'item-cb':'item-cb-checked'}}" bindtap="toggleCheckedCarts" data-id="{{item.id}}" data-num="{{item.num}}" data-price="{{item.price}}"></view>
         <image src="../../images/cart/milk.png" class="item-img"></image>
         <view class="item-info">
           <view class="item-name ellip">{{item.name}}</view>
@@ -26,9 +26,9 @@
                
               <view class="calCart">
                 <view class="calcart">
-                    <view class="minus" bindtap='minusNumber' data-number="{{number}}" data-id="{{item.id}}">-</view>
+                    <view class="minus" bindtap='minusNumber' data-isChecked="{{item.isChecked}}" data-number="{{item.num}}" data-id="{{item.id}}">-</view>
                     <input type="number" disabled value="{{item.num}}" class="ellip"/>
-                    <view class="plus" bindtap='plusNumber' data-number="{{number}}" data-id="{{item.id}}">+</view>
+                    <view class="plus" bindtap='plusNumber' data-isChecked="{{item.isChecked}}" data-number="{{item.num}}" data-id="{{item.id}}">+</view>
                 </view> 
               </view>
           </view> 
@@ -40,7 +40,7 @@
     <view class="{{!isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
     全选
     <view class="tocalsum">结算</view>
-    <view class="result">合计:￥00</view>
+    <view class="result">合计:￥{{allSum}}</view>
   </view>
 
 
