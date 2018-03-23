@@ -15,8 +15,8 @@ Page({
         { "isChecked": false, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "03" }
       ]
     }],
-    address:'',
-    lightValue: ''
+    lightValue: '',
+    cartList: app.globalData.cartList
   },
 
   /**
@@ -123,14 +123,7 @@ Page({
     wx.setStorageSync('likelist', list)
   },
 
-  // 打开相册
-  openpic(){
-    wx.chooseImage({
-      success: function(res) {
-        console.log(res)
-      },
-    })
-  },
+
 
 
 
@@ -146,37 +139,61 @@ Page({
       }
     })
   },
-  // 选择地理位置
-  chooselocation() {
-    wx.chooseLocation({
-      success: (res) => {
-        console.log(res)
-        wx.showToast({ icon: 'success', title: '成功' })
-        this.setData({
-          address: res.name
-        })
+
+  // 添加到购物车
+  addCart() {
+    
+    var shopid = this.data.item.shopid,
+      itemid = this.data.item.id
+
+    var cartList = app.globalData.cartList;
+    console.log(cartList)
+    var hasshop = false;
+    for(var i=0; i<cartList.length; i++){
+      if(cartList[i].shopid === shopid){
+        hasshop = true;
+        var flag = true;
+        for (var j = 0; j < cartList[i].products.length; j++){
+          if (cartList[i].products[j].id == itemid){
+            cartList[i].products[j].num ++;
+            flag = false;
+            break;
+          }
+        }
+        if(flag){
+          var goods = {
+            "isChecked": true,
+            "name": this.data.item.name,
+            "spec": this.data.item.spec,
+            "unit": "30粒/包",
+            "price": this.data.item.price,
+            "num": 1,
+            id: this.data.item.id
+          }
+          cartList[i].products.push(goods)
+        }
+        break;
       }
-    })
-  },
-  showPhoneInfo(){
-    wx.getSystemInfo({
-      success: (res)=>{
-        console.log(res)
+    }
+
+    if(!hasshop){
+      var goods = {
+        shopid: shopid,
+        isChecked: true,
+        shopname: this.data.item.shopname,
+        products: [{
+          "isChecked": true,
+          "name": this.data.item.name,
+          "spec": this.data.item.spec,
+          "unit": "30粒/包",
+          "price": this.data.item.price,
+          "num": 1,
+          id: this.data.item.id
+        }]
       }
-    })
-  },
-  // 二维码
-  scancode(){
-    wx.scanCode({
-      success: (res) => {
-        console.log(res)
-      }
-    })
-  },
-  brightChange(e){
-    console.log(e)
-    wx.setScreenBrightness({
-      value: e.detail.value/100
-    })
+      app.globalData.cartList.push(goods);
+    }
+    console.log(app.globalData.cartList)
   }
+  
 })

@@ -8,4 +8,8 @@
     </view>
   </view>
 </view>
- <surebox></surebox> 
+<view class='empty' wx:if="{{list.length == 0}}">
+  <image src='../../images/common/empty.png'></image>
+  <navigator class='nav' hover-class='none' open-type='switchTab'	 url='../index/index'>去逛啊~</navigator>
+</view>
+ <!-- <surebox></surebox>  -->

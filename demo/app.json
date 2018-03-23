@@ -4,7 +4,9 @@
     "pages/cart/cart",
     "pages/logs/logs",
     "pages/worklist/worklist",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/testapi/testapi",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,11 +31,11 @@
         "selectedIconPath": "images/tabBarIcon/list_act.png"
       },
       {
-        "pagePath": "pages/worklist/worklist",
-        "text": "测试",
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
         "iconPath": "images/tabBarIcon/favorites.png",
         "selectedIconPath": "images/tabBarIcon/favorites_act.png"
-       }    
+      }
     ]
   }
 }
