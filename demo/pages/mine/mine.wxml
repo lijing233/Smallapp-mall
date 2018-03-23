@@ -1,0 +1,27 @@
+<!--pages/mine/mine.wxml-->
+<view class='container'>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+<view>
+  <view class='jumpbar' bindtap='jump'>
+     <image src='../../images/common/xin.png'></image> 
+    心愿单
+     <image src='../../images/common/right.png' class='arrow'></image> 
+  </view>
+    <view class='jumpbar' bindtap='jump2'>
+     <image src='../../images/common/fu.png'></image> 
+    api测试
+     <image src='../../images/common/right.png' class='arrow'></image> 
+  </view>
+    <view class='jumpbar'>
+     <image src='../../images/common/tx.png'></image> 
+    test
+     <image src='../../images/common/right.png' class='arrow'></image> 
+  </view>
+</view>
