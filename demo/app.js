@@ -4,7 +4,6 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    console.log(logs)
     wx.setStorageSync('logs', logs)
 
     // 存储likelist

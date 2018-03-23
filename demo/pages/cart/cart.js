@@ -1,4 +1,5 @@
 // pages/cart/cart.js
+let app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -6,13 +7,15 @@ Page({
   data: {
     list: [{
       id:"1","shopname": "商城abc", "isChecked": true, "products": [
-        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "$18.00", "num": "3", id: "01" },
-        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "$18.00", "num": "3", id: "02" },
+        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "01" },
+        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "02" },
         { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "03" }
       ]
     }],
     isChecked: true,//商城checkbox
-    checkedCarts: []
+    checkedCarts: [],
+    number: 0,
+    id: ''
   },
   onManage() {
     this.setData({
@@ -65,6 +68,27 @@ Page({
       })    
     }
   },
+  //start组件粘贴过来的
+  plusNumber(e) {
+    let pn = parseInt(e.target.dataset.number);
+    let id = e.target.dataset.id;
+    console.log(id)
+    pn +=1
+    this.setData({
+      number: pn
+    })
+  },
+  minusNumber(e) {
+    console.log(this.data.number--)
+    let mn = this.data.number--
+    if (mn < 0) {
+      mn = 0
+    }
+    this.setData({
+      number: mn
+    })
+  },
+  //end组件粘贴过来的
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -77,7 +101,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**

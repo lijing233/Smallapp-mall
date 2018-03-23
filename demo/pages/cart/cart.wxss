@@ -104,7 +104,7 @@ view {
   padding-left: 300rpx;
 }
 .item-name {
-  font-size: 38rpx;
+  font-size: 30rpx;
   font-weight: bold;
   max-width: 56%; 
   height: 98rpx;
@@ -112,15 +112,20 @@ view {
 }
 .spec,.unit,.origin {
   color: #ccc;
-  font-size: 16px;
+  font-size: 28rpx;
   display: inline-block;
 }
 .unit {
   margin-left: 20rpx;
 }
-
+.calCart {
+  position: absolute;
+  left: 240rpx;
+  bottom: -14rpx;
+}
 .item-price {
   position: relative;
+  font-size: 28rpx;
 }
 .current,.num {
   display: inline-block;
@@ -150,4 +155,34 @@ view {
   margin-top: 36px;
   background-color: rosybrown;
   float: left;
+}
+.calcart {
+  display: block;
+}
+.minus,.plus {
+  background-color: rosybrown;
+}
+.minus,.plus,input {
+  display: inline-block;
+  width: 52rpx;
+  height: 56rpx;
+  float: left;
+  text-align: center;
+  line-height: 56rpx;
+  cursor: pointer;
+}
+input {
+  width: 90rpx;
+  height: 54rpx;
+  border: 1rpx solid rosybrown;
+  outline: none;
+  font-size: 24rpx;
+}
+.ellip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;  */
 }
