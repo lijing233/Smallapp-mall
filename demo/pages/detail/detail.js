@@ -14,7 +14,9 @@ Page({
         { "isChecked": false, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "$18.00", "num": "3", id: "02" },
         { "isChecked": false, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "03" }
       ]
-    }]
+    }],
+    address:'',
+    lightValue: ''
   },
 
   /**
@@ -34,6 +36,20 @@ Page({
         break;
       }
     }
+
+    wx.setNavigationBarTitle({
+      title: this.data.item.name
+    })
+
+    // 获取亮度
+    wx.getScreenBrightness({
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          lightValue: parseInt(res.value*100)
+        })
+      }
+    })
   },
 
   /**
@@ -47,7 +63,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // wx.setNavigationBarTitle(this.data.item.name)
+    console.log(this.data.item.name)
+    
   },
 
   /**
@@ -116,10 +133,8 @@ Page({
   },
 
 
-  // xiaoxi
-  showtoast() {
-    wx.showToast({icon:'success',title: '成功'})
-  },
+
+  // 底部选择栏
   showaction() {
     wx.showActionSheet({
       itemList: ['ipone8 128G 黑色', 'ipone8 128G 白色', 'iponeX 128G 黑色'],
@@ -129,6 +144,39 @@ Page({
       fail: function (res) {
         console.log(res.errMsg)
       }
+    })
+  },
+  // 选择地理位置
+  chooselocation() {
+    wx.chooseLocation({
+      success: (res) => {
+        console.log(res)
+        wx.showToast({ icon: 'success', title: '成功' })
+        this.setData({
+          address: res.name
+        })
+      }
+    })
+  },
+  showPhoneInfo(){
+    wx.getSystemInfo({
+      success: (res)=>{
+        console.log(res)
+      }
+    })
+  },
+  // 二维码
+  scancode(){
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+      }
+    })
+  },
+  brightChange(e){
+    console.log(e)
+    wx.setScreenBrightness({
+      value: e.detail.value/100
     })
   }
 })
