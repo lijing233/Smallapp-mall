@@ -26,9 +26,20 @@
     </view> 
   </view>
   <view class="footer">
-    <view class="checkbox"></view>
+    <view class="{{!isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
     全选
     <view class="tocalsum">结算</view>
     <view class="result">合计:￥00</view>
   </view>
+
+ <view class="calCart">
+  <calcart id="calCart">
+  </calcart>
+</view> 
+
+
+
+
+
+
 </view>

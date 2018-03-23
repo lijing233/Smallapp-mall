@@ -1,0 +1,6 @@
+<!--components/calCart/calcart.wxml-->
+<view class="calcart">
+    <view class="minus">-</view>
+    <input type="number" value="89"/>
+    <view class="plus">+</view>
+</view>
