@@ -1,6 +1,6 @@
 <!--components/calCart/calcart.wxml-->
 <view class="calcart">
-    <view class="minus">-</view>
-    <input type="number" value="89"/>
-    <view class="plus">+</view>
+    <view class="minus" bindtap='minusNumber' data-number="{{number}}">-</view>
+    <input type="number" disabled value="{{number}}" class="ellip"/>
+    <view class="plus" bindtap='plusNumber'data-number="{{number}}">+</view>
 </view>
