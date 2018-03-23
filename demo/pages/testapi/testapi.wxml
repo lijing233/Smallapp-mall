@@ -1,0 +1,12 @@
+<!--pages/testapi/testapi.wxml-->
+<text>pages/testapi/testapi.wxml</text>
+<view style='margin-top:100px'>
+    <text>测试</text>
+    <button type="primary" size='mini' bindtap='openpic'>打开相册</button>
+    <!--弹窗  -->
+    <button bindtap='chooselocation'>选择位置</button>
+    <view>位置信息：{{address}}</view>
+    <button bindtap='showPhoneInfo'>获取手机信息</button>
+    <button bindtap='scancode'>扫码</button>
+    <slider min='0' max='100' bindchanging="brightChange" value='{{lightValue}}'></slider>
+  </view>
