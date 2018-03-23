@@ -16,7 +16,8 @@ Page({
     checkedCarts: [],
     number: 0,
     id: '',
-    allSum: 0
+    allSum: 0,
+    isShow: false
   },
   onManage() {
     this.setData({
@@ -108,8 +109,12 @@ Page({
       pn += 1
     } else {
       pn -= 1
-      if (pn < 0) {
-        pn = 0
+      if (pn < 1 ) {
+        pn = 1
+        wx.showToast({
+          title: '特贫证已颁发',
+          duration: 3000
+        })
       }
     }
     let itemId = e.target.dataset.id;

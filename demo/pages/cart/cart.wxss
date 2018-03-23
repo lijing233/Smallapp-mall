@@ -12,6 +12,7 @@ view {
   left: 0;
   right: 0;
   background-color:#f0f0f0;
+  overflow: hidden;
 }
 .contain {
   width: 100%;
@@ -53,19 +54,27 @@ view {
   display: inline-block;
   width: 30rpx;
   height: 30rpx;
-  border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 20rpx;
+  border: 1px solid rosybrown;
+  padding: 2rpx;
+  box-sizing: border-box;
+  background-clip: content-box;
+  transition: all .3s; 
 }
 .item-cb {
   display: inline-block;
   width: 30rpx;
   height: 30rpx;
-  border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 20rpx;  
   float: left;
   margin-top: 36px;
+  border: 1px solid rosybrown;
+  padding: 2rpx;
+  box-sizing: border-box;
+  background-clip: content-box;
+  transition: all .3s;    
 }
 .shop-bar {
   background-color: #fff; 
@@ -120,7 +129,7 @@ view {
 }
 .calCart {
   position: absolute;
-  left: 240rpx;
+  left: 220rpx;
   bottom: -14rpx;
 }
 .item-price {
@@ -132,29 +141,37 @@ view {
 }
 .num{
   position:absolute;
-  left:170rpx;
+  left:150rpx;
   top: 0px;
-
 }
+/* .tip {
+   left:100rpx;
+} */
 .checked {
   display: inline-block;
   width: 30rpx;
   height: 30rpx;
-  border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 20rpx;
   background-color: rosybrown;
+  border: 5rpx solid rosybrown;
+  padding: 5rpx;
+  box-sizing: border-box;
+  background-clip: content-box; 
 }
 .item-cb-checked {
   display: inline-block;
   width: 30rpx;
   height: 30rpx;
-  border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 20rpx;  
   margin-top: 36px;
-  background-color: rosybrown;
   float: left;
+  background-color: rosybrown;
+  border: 5rpx solid rosybrown;
+  padding: 5rpx;
+  box-sizing: border-box;
+  background-clip: content-box;   
 }
 .calcart {
   display: block;

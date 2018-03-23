@@ -18,12 +18,12 @@
           </view>
           <view class="item-price">
               <view class="current">{{item.price}}</view>
-              <view class="num">x{{item.num}}</view>
+              <view class="num" wx:if="{{!isShow}}">x{{item.num}}</view>
+              <view class="num tip" wx:else>真穷</view>
               <!-- //组件部分
                 <calcart id="calCart" num="{{item.num}}" itemId="{{item.id}}">
                 </calcart> 
                  --> 
-               
               <view class="calCart">
                 <view class="calcart">
                     <view class="minus" bindtap='minusNumber' data-isChecked="{{item.isChecked}}" data-number="{{item.num}}" data-id="{{item.id}}">-</view>
@@ -42,10 +42,4 @@
     <view class="tocalsum">结算</view>
     <view class="result">合计:￥{{allSum}}</view>
   </view>
-
-
-
-
-
-
 </view>
