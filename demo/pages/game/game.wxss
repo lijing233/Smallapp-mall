@@ -1,0 +1,18 @@
+/* pages/game/game.wxss */
+view{
+  box-sizing: border-box;
+}
+.row{
+  width: 100%;
+  height: 160rpx;
+  line-height: 160rpx;
+  display: flex;
+  text-align: center;
+}
+.blockitem{
+  flex: 1;
+  background: yellow;
+  margin: 10rpx;
+  border-radius: 20rpx;
+  font-size: 60rpx;
+}

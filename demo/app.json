@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/cart/cart",
     "pages/index/index",
+    "pages/cart/cart",
     "pages/logs/logs",
     "pages/worklist/worklist",
     "pages/detail/detail",
     "pages/testapi/testapi",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/game/game"
   ],
   "window": {
     "backgroundTextStyle": "light",
