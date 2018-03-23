@@ -1,0 +1,7 @@
+<!--pages/game/game.wxml-->
+<text>pages/game/game.wxml</text>
+<view bindtouchstart='startfun' bindtouchmove='movefun' bindtouchend='endfun'>
+  <view wx:for="{{grid}}" class='row'>
+    <view wx:for="{{item}}" wx:for-item="childitem" class='blockitem'>{{childitem}}</view>
+  </view>
+</view>

@@ -62,7 +62,7 @@ Page({
     }else {
       this.setData({
         isChecked: true
-      })    
+      })
     }
   },
   /**
