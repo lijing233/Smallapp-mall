@@ -5,7 +5,7 @@
       <view class="shop-bar">
         <view class="{{!isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
         <view class="shop-name" bindtap="onManage">{{shop.shopname}}</view>
-        <view class="edit">编辑</view>
+        <view class="edit" bindtap='toggleDeleteItem'>{{isDelete?'':'编辑'}}</view>
       </view>
       <view class="item-wrap" wx:for="{{shop.products}}" wx:for-item="item" wx:key="index">
         <view class="{{!item.isChecked?'item-cb':'item-cb-checked'}}" bindtap="toggleCheckedCarts" data-id="{{item.id}}" data-num="{{item.num}}" data-price="{{item.price}}"></view>
@@ -39,7 +39,8 @@
   <view class="footer">
     <view class="{{!isChecked?'checkbox':'checked'}}" bindtap="onManage"></view>
     全选
-    <view class="tocalsum">结算</view>
-    <view class="result">合计:￥{{allSum}}</view>
+    <view class="tocalsum" bindtap='goToResult' data-type="{{isDelete?'0':'1'}}">{{isDelete?'删除':'结算'}}</view>
+    <view class="result" wx:if="{{!isDelete}}">合计:￥{{allSum}}</view>
+    <view class="result" wx:else bindtap="cancelDelete">取消</view>
   </view>
 </view>

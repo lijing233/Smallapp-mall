@@ -5,19 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{
-      id:"1","shopname": "商城abc", "isChecked": true, "products": [
-        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "01" },
-        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "02" },
-        { "isChecked": true, "name": "盆栽花四季播种单品单束", "spec": "粉，鲜花种子", "unit": "30粒/包", "price": "18.00", "num": "3", id: "03" }
-      ]
-    }],
+    list: [],
     isChecked: true,//商城checkbox
     checkedCarts: [],
     number: 0,
     id: '',
     allSum: 0,
-    isShow: false
+    isShow: false,
+    isDelete: false
   },
   onManage() {
     this.setData({
@@ -157,7 +152,25 @@ Page({
    */
   onReady: function () {
     this.calCart = this.selectComponent("#calCart")
-    this.originSum()
+  },
+  onLoad: function () {
+    wx.showLoading({
+    })
+    wx.showNavigationBarLoading()
+    this.reqCartList() 
+  },
+  reqCartList() {
+    wx.request({
+      url: "https://www.easy-mock.com/mock/5ab1c898099ac320aa6ba70e/wechat/lijing/carts",
+      success: (res) => {
+        wx.hideLoading()
+        wx.hideNavigationBarLoading()
+        this.setData({
+          list: res.data.data.carts
+        })
+        this.originSum();
+      }
+    })
   },
   originSum() {
     let carts = this.data.list[0].products;
@@ -171,45 +184,82 @@ Page({
       allSum: allSum
     }) 
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
+  toggleDeleteItem() {
+    this.setData({
+      isDelete: !this.data.isDelete
+    })
+    if (this.data.isDelete) {
+      this.onManage()
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  cancelDelete() {
+    this.setData({
+      isDelete: false
+    })
+    this.onManage()
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  goToResult(e) {
+    let type = e.target.dataset.type;
+    this.goToResultApi(type)
   },
+  goToResultApi(type) {
+    let url;
+    // if(type === '0') {
+    //   url = " https://www.easy-mock.com/mock/5ab1c898099ac320aa6ba70e/wechat/lijing/delete"
+    // }else {
+    //   url = "https://www.easy-mock.com/mock/5ab1c898099ac320aa6ba70e/wechat/lijing/cal"
+    // }
+    //模拟删除
+    if (type === '0') {
+      let carts = this.data.list[0].products;
+      let deleteItem = []
+      carts.forEach(function (t) {
+        if (t.isChecked) {
+          console.log(t)
+          carts.splice(t, 1)
+        }
+      })
+      this.setData({
+        list: [{
+          "id": "1",
+          "shopname": "商城abc",
+          "isChecked": true,
+          "products": carts
+        }]
+      })
+    } else if(type === '1'){
+      console.log(type)
+      wx.showModal({
+        title: '成功',
+        content: "已结算",
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    // wx.request({
+    //   url: url,
+    //   success: (res) => {
+    //     wx.hideLoading()
+    //     wx.hideNavigationBarLoading()
+    //     this.setData({
+    //       list: res.data.data.carts
+    //     })
+    //   }
+    // })
   }
+
+
+
+
+
+
+
+
+
 })
